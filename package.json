@@ -9,6 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vee-validate/valibot": "^4.12.5",
+    "valibot": "^0.28.1",
+    "vee-validate": "^4.12.5",
     "vue": "^3.4.15"
   },
   "devDependencies": {

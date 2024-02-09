@@ -1,5 +1,17 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+  import HelloWorld from './components/HelloWorld.vue'
+  import { useForm } from 'vee-validate';
+  import { string, object, email, minLength } from 'valibot';
+  import { toTypedSchema } from '@vee-validate/valibot';
+  // Creates a typed schema for vee-validate
+  const schema = toTypedSchema(
+    object({
+      email: string([minLength(1, 'required'), email()]),
+    }),
+  );
+  useForm({
+    validationSchema: schema,
+  });
 </script>
 
 <template>
@@ -15,16 +27,18 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+  .logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+  }
+
+  .logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+  }
+
+  .logo.vue:hover {
+    filter: drop-shadow(0 0 2em #42b883aa);
+  }
 </style>
